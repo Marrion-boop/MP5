@@ -1,6 +1,7 @@
 import test_user_info
 import os
-
+import buying_auction
+import selling_auction
 
 print("Welcome to the auction house")
 
@@ -16,6 +17,7 @@ while True:
 
     if MenuChoice == 1:
         while True:
+            Logged_in = False
             print("[1] Login")
             print("[2] Sign-up")
             SubMenuChoice = int(input("Choice: "))
@@ -28,13 +30,15 @@ while True:
                     print(line)
                     signin_check = line.split()
                     
-                    if dummy_name == signin_check[1] and dummy_pass == signin_check[2]:
+                    if dummy_name == signin_check[1] and dummy_passinput == signin_check[2]:
                         os.system('cls')
                         print("Login Successful")
-                        break
+                        Logged_in = True
                     else:
                         os.system('cls')
                         print("Login Failed")
+                        Logged_in = False
+                    
 
         
             elif SubMenuChoice == 2:
@@ -51,9 +55,13 @@ while True:
          
             else:
                 print("Input a Valid Number!")
+            if Logged_in:
+                buyer_menu_object = buying_auction.Menu()
+            break
 
     elif MenuChoice == 2:
         while True:
+            Logged_in = False
             print("[1] Login")
             print("[2] Sign-up")
             SubMenuChoice = int(input("Choice: "))
@@ -69,10 +77,12 @@ while True:
                     if dummy_name == signin_check[1] and dummy_pass == signin_check[2]:
                         os.system('cls')
                         print("Login Successful")
-                        break
+                        Logged_in = True
                     else:
                         os.system('cls')
                         print("Login Failed")
+                        Logged_in = False
+                    
 
 
             elif SubMenuChoice == 2:
@@ -92,6 +102,9 @@ while True:
                 break
             else:
                 print("Input a Valid Number!")
+            if Logged_in:
+                seller_menu_object = selling_auction.Menu()
+            break
 
     elif MenuChoice == 3:
         pass
