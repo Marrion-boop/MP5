@@ -97,9 +97,9 @@ def get_info():
              info_array.append(eval(line))
     return info_array
 
+
+#removables
 info_array=get_info()
-
-
 if not info_array:
     print("Empty Set")
 else: 
