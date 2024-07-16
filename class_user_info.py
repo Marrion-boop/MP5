@@ -1,3 +1,4 @@
+import os.path
 class Person():
     __member_id=0
     __id_member=0
@@ -40,5 +41,70 @@ class Seller(Person):
 seller=Seller("Email","Name","Password","Address","Phonenum","BankAccnum","Routnum")
 seller2=Seller("Email","Name","Password","Address","Phonenum","BankAccnum","Routnum")
 buyer=Buyer("Email","Name","Password","Address","Phonenum","Shipping Address")
+
+   
+def putinfile(info_array):
+ #Pass an array to this 
+ #Check if file exist otherwise it will create a new file
+ if os.path.isfile("demofile2.txt"):
+    f=open("demofile2.txt","a")
+    for person in range(len(info_array)):
+        g=info_array[person].get()
+        if info_array[person].member=="Buyer":
+            print("This is Append Buy")
+            f.write("Buyer")
+            f.write(str(g))
+            f.write("\n")
+        
+        else:
+            print("This is Append Sell")
+            f.write("Seller")
+            f.write(str(g))
+            f.write("\n")
+        
+ 
+    f.close()
+ else:
+    f=open("demofile2.txt","w")
+    for person in range(len(info_array)):
+        g=info_array[person].get()
+        if info_array[person].member=="Buyer":
+            print("This is Write Buy")
+            f.write("Buyer")
+            f.write(str(g))
+            f.write("\n")
+        
+        else:
+            print("This is Write Sell")
+            f.write("Seller")
+            f.write(str(g))
+            f.write("\n")
+        
+ 
+    f.close()
+
+def get_info():
+#Assign this to an array
+#Check if the file exist and read the content otherwise it return nothing
+   if os.path.isfile("demofile2.txt"):
+    info_array=[]
+    with open("demofile2.txt","r") as f:
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            else:
+             info_array.append(eval(line))
+    return info_array
+
+
+#removables
+info_array=get_info()
+if not info_array:
+    print("Empty Set")
+else: 
+    for info in info_array:
+        info.show()
+
 
     
