@@ -3,7 +3,7 @@ class Person():
     __member_id=0
     __id_member=0
     def __init__(self,email_address,name,password,address,phonenum):
-        self.__member_id+=1
+        Person.__member_id+=1
         self.__id_member=self.__member_id
         self.email_address=email_address
         self.name=name

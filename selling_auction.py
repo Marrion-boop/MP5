@@ -6,8 +6,10 @@ def Sell():
     name = input("Enter your item name: ")
     price = input("Enter your item price: ")
     rank = input("Enter your item rank: ")
-    lines = (name +'\n'+ price +'\n'+ rank)
+    goodboy=[name,price,rank]
+    lines = (str(goodboy))
     f.writelines(lines)
+    f.writelines("\n")
     f.close()
 
 
